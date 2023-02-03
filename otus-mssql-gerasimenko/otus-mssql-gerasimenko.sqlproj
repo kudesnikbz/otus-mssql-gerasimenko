@@ -58,4 +58,7 @@
     <Folder Include="Properties" />
     <Folder Include="HW01 - install" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="HW01 - install\ScreenWideWorldImporters.png" />
+  </ItemGroup>
 </Project>
