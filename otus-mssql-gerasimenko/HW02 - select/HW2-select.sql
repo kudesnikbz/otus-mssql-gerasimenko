@@ -1,27 +1,27 @@
 /*
-Домашнее задание по курсу MS SQL Server Developer в OTUS.
-Занятие "02 - Оператор SELECT и простые фильтры, JOIN".
+Р”РѕРјР°С€РЅРµРµ Р·Р°РґР°РЅРёРµ РїРѕ РєСѓСЂСЃСѓ MS SQL Server Developer РІ OTUS.
+Р—Р°РЅСЏС‚РёРµ "02 - РћРїРµСЂР°С‚РѕСЂ SELECT Рё РїСЂРѕСЃС‚С‹Рµ С„РёР»СЊС‚СЂС‹, JOIN".
 
-Задания выполняются с использованием базы данных WideWorldImporters.
+Р—Р°РґР°РЅРёСЏ РІС‹РїРѕР»РЅСЏСЋС‚СЃСЏ СЃ РёСЃРїРѕР»СЊР·РѕРІР°РЅРёРµРј Р±Р°Р·С‹ РґР°РЅРЅС‹С… WideWorldImporters.
 
-Бэкап БД WideWorldImporters можно скачать отсюда:
+Р‘СЌРєР°Рї Р‘Р” WideWorldImporters РјРѕР¶РЅРѕ СЃРєР°С‡Р°С‚СЊ РѕС‚СЃСЋРґР°:
 https://github.com/Microsoft/sql-server-samples/releases/download/wide-world-importers-v1.0/WideWorldImporters-Full.bak
 
-Описание WideWorldImporters от Microsoft:
+РћРїРёСЃР°РЅРёРµ WideWorldImporters РѕС‚ Microsoft:
 * https://docs.microsoft.com/ru-ru/sql/samples/wide-world-importers-what-is
 * https://docs.microsoft.com/ru-ru/sql/samples/wide-world-importers-oltp-database-catalog
 */
 
 -- ---------------------------------------------------------------------------
--- Задание - написать выборки для получения указанных ниже данных.
+-- Р—Р°РґР°РЅРёРµ - РЅР°РїРёСЃР°С‚СЊ РІС‹Р±РѕСЂРєРё РґР»СЏ РїРѕР»СѓС‡РµРЅРёСЏ СѓРєР°Р·Р°РЅРЅС‹С… РЅРёР¶Рµ РґР°РЅРЅС‹С….
 -- ---------------------------------------------------------------------------
 
 USE WideWorldImporters
 
 /*
-1. Все товары, в названии которых есть "urgent" или название начинается с "Animal".
-Вывести: ИД товара (StockItemID), наименование товара (StockItemName).
-Таблицы: Warehouse.StockItems.
+1. Р’СЃРµ С‚РѕРІР°СЂС‹, РІ РЅР°Р·РІР°РЅРёРё РєРѕС‚РѕСЂС‹С… РµСЃС‚СЊ "urgent" РёР»Рё РЅР°Р·РІР°РЅРёРµ РЅР°С‡РёРЅР°РµС‚СЃСЏ СЃ "Animal".
+Р’С‹РІРµСЃС‚Рё: РР” С‚РѕРІР°СЂР° (StockItemID), РЅР°РёРјРµРЅРѕРІР°РЅРёРµ С‚РѕРІР°СЂР° (StockItemName).
+РўР°Р±Р»РёС†С‹: Warehouse.StockItems.
 */
 
 SELECT DISTINCT StockItemID
@@ -33,11 +33,11 @@ ORDER BY StockItemID ASC
 	,StockItemName
 
 /*
-2. Поставщиков (Suppliers), у которых не было сделано ни одного заказа (PurchaseOrders).
-Сделать через JOIN, с подзапросом задание принято не будет.
-Вывести: ИД поставщика (SupplierID), наименование поставщика (SupplierName).
-Таблицы: Purchasing.Suppliers, Purchasing.PurchaseOrders.
-По каким колонкам делать JOIN подумайте самостоятельно.
+2. РџРѕСЃС‚Р°РІС‰РёРєРѕРІ (Suppliers), Сѓ РєРѕС‚РѕСЂС‹С… РЅРµ Р±С‹Р»Рѕ СЃРґРµР»Р°РЅРѕ РЅРё РѕРґРЅРѕРіРѕ Р·Р°РєР°Р·Р° (PurchaseOrders).
+РЎРґРµР»Р°С‚СЊ С‡РµСЂРµР· JOIN, СЃ РїРѕРґР·Р°РїСЂРѕСЃРѕРј Р·Р°РґР°РЅРёРµ РїСЂРёРЅСЏС‚Рѕ РЅРµ Р±СѓРґРµС‚.
+Р’С‹РІРµСЃС‚Рё: РР” РїРѕСЃС‚Р°РІС‰РёРєР° (SupplierID), РЅР°РёРјРµРЅРѕРІР°РЅРёРµ РїРѕСЃС‚Р°РІС‰РёРєР° (SupplierName).
+РўР°Р±Р»РёС†С‹: Purchasing.Suppliers, Purchasing.PurchaseOrders.
+РџРѕ РєР°РєРёРј РєРѕР»РѕРЅРєР°Рј РґРµР»Р°С‚СЊ JOIN РїРѕРґСѓРјР°Р№С‚Рµ СЃР°РјРѕСЃС‚РѕСЏС‚РµР»СЊРЅРѕ.
 */
 
 SELECT DISTINCT a.SupplierID
@@ -49,33 +49,33 @@ ORDER BY a.SupplierID
 	,a.SupplierName
 
 /*
-3. Заказы (Orders) с ценой товара (UnitPrice) более 100$ 
-либо количеством единиц (Quantity) товара более 20 штук
-и присутствующей датой комплектации всего заказа (PickingCompletedWhen).
-Вывести:
+3. Р—Р°РєР°Р·С‹ (Orders) СЃ С†РµРЅРѕР№ С‚РѕРІР°СЂР° (UnitPrice) Р±РѕР»РµРµ 100$ 
+Р»РёР±Рѕ РєРѕР»РёС‡РµСЃС‚РІРѕРј РµРґРёРЅРёС† (Quantity) С‚РѕРІР°СЂР° Р±РѕР»РµРµ 20 С€С‚СѓРє
+Рё РїСЂРёСЃСѓС‚СЃС‚РІСѓСЋС‰РµР№ РґР°С‚РѕР№ РєРѕРјРїР»РµРєС‚Р°С†РёРё РІСЃРµРіРѕ Р·Р°РєР°Р·Р° (PickingCompletedWhen).
+Р’С‹РІРµСЃС‚Рё:
 * OrderID
-* дату заказа (OrderDate) в формате ДД.ММ.ГГГГ
-* название месяца, в котором был сделан заказ
-* номер квартала, в котором был сделан заказ
-* треть года, к которой относится дата заказа (каждая треть по 4 месяца)
-* имя заказчика (Customer)
-Добавьте вариант этого запроса с постраничной выборкой,
-пропустив первую 1000 и отобразив следующие 100 записей.
+* РґР°С‚Сѓ Р·Р°РєР°Р·Р° (OrderDate) РІ С„РѕСЂРјР°С‚Рµ Р”Р”.РњРњ.Р“Р“Р“Р“
+* РЅР°Р·РІР°РЅРёРµ РјРµСЃСЏС†Р°, РІ РєРѕС‚РѕСЂРѕРј Р±С‹Р» СЃРґРµР»Р°РЅ Р·Р°РєР°Р·
+* РЅРѕРјРµСЂ РєРІР°СЂС‚Р°Р»Р°, РІ РєРѕС‚РѕСЂРѕРј Р±С‹Р» СЃРґРµР»Р°РЅ Р·Р°РєР°Р·
+* С‚СЂРµС‚СЊ РіРѕРґР°, Рє РєРѕС‚РѕСЂРѕР№ РѕС‚РЅРѕСЃРёС‚СЃСЏ РґР°С‚Р° Р·Р°РєР°Р·Р° (РєР°Р¶РґР°СЏ С‚СЂРµС‚СЊ РїРѕ 4 РјРµСЃСЏС†Р°)
+* РёРјСЏ Р·Р°РєР°Р·С‡РёРєР° (Customer)
+Р”РѕР±Р°РІСЊС‚Рµ РІР°СЂРёР°РЅС‚ СЌС‚РѕРіРѕ Р·Р°РїСЂРѕСЃР° СЃ РїРѕСЃС‚СЂР°РЅРёС‡РЅРѕР№ РІС‹Р±РѕСЂРєРѕР№,
+РїСЂРѕРїСѓСЃС‚РёРІ РїРµСЂРІСѓСЋ 1000 Рё РѕС‚РѕР±СЂР°Р·РёРІ СЃР»РµРґСѓСЋС‰РёРµ 100 Р·Р°РїРёСЃРµР№.
 
-Сортировка должна быть по номеру квартала, трети года, дате заказа (везде по возрастанию).
+РЎРѕСЂС‚РёСЂРѕРІРєР° РґРѕР»Р¶РЅР° Р±С‹С‚СЊ РїРѕ РЅРѕРјРµСЂСѓ РєРІР°СЂС‚Р°Р»Р°, С‚СЂРµС‚Рё РіРѕРґР°, РґР°С‚Рµ Р·Р°РєР°Р·Р° (РІРµР·РґРµ РїРѕ РІРѕР·СЂР°СЃС‚Р°РЅРёСЋ).
 
-Таблицы: Sales.Orders, Sales.OrderLines, Sales.Customers.
+РўР°Р±Р»РёС†С‹: Sales.Orders, Sales.OrderLines, Sales.Customers.
 */
 
 DECLARE @Rows TINYINT = 0
 	   ,@Fetch TINYINT = 5;
 
 SELECT a.OrderID
-	,[OrderDate1] = CONVERT(VARCHAR(10), a.OrderDate, 104) --дату заказа (OrderDate) в формате ДД.ММ.ГГГГ
-	,[OrderDate2] = FORMAT(a.OrderDate, 'dd.MM.yyyy') --дату заказа (OrderDate) в формате ДД.ММ.ГГГГ
-	,[MonthName] = datename(month, a.OrderDate) -- название месяца, в котором был сделан заказ
-	,[Quarter] = DATEPART(quarter, a.OrderDate) --номер квартала, в котором был сделан заказ
-	,[ThirdYear] = -- треть года, к которой относится дата заказа (каждая треть по 4 месяца)
+	,[OrderDate1] = CONVERT(VARCHAR(10), a.OrderDate, 104) --РґР°С‚Сѓ Р·Р°РєР°Р·Р° (OrderDate) РІ С„РѕСЂРјР°С‚Рµ Р”Р”.РњРњ.Р“Р“Р“Р“
+	,[OrderDate2] = FORMAT(a.OrderDate, 'dd.MM.yyyy') --РґР°С‚Сѓ Р·Р°РєР°Р·Р° (OrderDate) РІ С„РѕСЂРјР°С‚Рµ Р”Р”.РњРњ.Р“Р“Р“Р“
+	,[MonthName] = datename(month, a.OrderDate) -- РЅР°Р·РІР°РЅРёРµ РјРµСЃСЏС†Р°, РІ РєРѕС‚РѕСЂРѕРј Р±С‹Р» СЃРґРµР»Р°РЅ Р·Р°РєР°Р·
+	,[Quarter] = DATEPART(quarter, a.OrderDate) --РЅРѕРјРµСЂ РєРІР°СЂС‚Р°Р»Р°, РІ РєРѕС‚РѕСЂРѕРј Р±С‹Р» СЃРґРµР»Р°РЅ Р·Р°РєР°Р·
+	,[ThirdYear] = -- С‚СЂРµС‚СЊ РіРѕРґР°, Рє РєРѕС‚РѕСЂРѕР№ РѕС‚РЅРѕСЃРёС‚СЃСЏ РґР°С‚Р° Р·Р°РєР°Р·Р° (РєР°Р¶РґР°СЏ С‚СЂРµС‚СЊ РїРѕ 4 РјРµСЃСЏС†Р°)
 	CASE 
 		WHEN DATEPART(month, a.OrderDate) BETWEEN 1	AND 4
 			THEN 1
@@ -95,22 +95,22 @@ GROUP BY a.OrderID
 	,c.CustomerName
 ORDER BY [Quarter] ASC
 	,[ThirdYear] ASC
-	,a.OrderDate ASC -- Сортировка должна быть по номеру квартала, трети года, дате заказа (везде по возрастанию).
+	,a.OrderDate ASC -- РЎРѕСЂС‚РёСЂРѕРІРєР° РґРѕР»Р¶РЅР° Р±С‹С‚СЊ РїРѕ РЅРѕРјРµСЂСѓ РєРІР°СЂС‚Р°Р»Р°, С‚СЂРµС‚Рё РіРѕРґР°, РґР°С‚Рµ Р·Р°РєР°Р·Р° (РІРµР·РґРµ РїРѕ РІРѕР·СЂР°СЃС‚Р°РЅРёСЋ).
 OFFSET @Rows Rows
 FETCH NEXT @Fetch Rows ONLY;
 
 /*
-4. Заказы поставщикам (Purchasing.Suppliers),
-которые должны быть исполнены (ExpectedDeliveryDate) в январе 2013 года
-с доставкой "Air Freight" или "Refrigerated Air Freight" (DeliveryMethodName)
-и которые исполнены (IsOrderFinalized).
-Вывести:
-* способ доставки (DeliveryMethodName)
-* дата доставки (ExpectedDeliveryDate)
-* имя поставщика
-* имя контактного лица принимавшего заказ (ContactPerson)
+4. Р—Р°РєР°Р·С‹ РїРѕСЃС‚Р°РІС‰РёРєР°Рј (Purchasing.Suppliers),
+РєРѕС‚РѕСЂС‹Рµ РґРѕР»Р¶РЅС‹ Р±С‹С‚СЊ РёСЃРїРѕР»РЅРµРЅС‹ (ExpectedDeliveryDate) РІ СЏРЅРІР°СЂРµ 2013 РіРѕРґР°
+СЃ РґРѕСЃС‚Р°РІРєРѕР№ "Air Freight" РёР»Рё "Refrigerated Air Freight" (DeliveryMethodName)
+Рё РєРѕС‚РѕСЂС‹Рµ РёСЃРїРѕР»РЅРµРЅС‹ (IsOrderFinalized).
+Р’С‹РІРµСЃС‚Рё:
+* СЃРїРѕСЃРѕР± РґРѕСЃС‚Р°РІРєРё (DeliveryMethodName)
+* РґР°С‚Р° РґРѕСЃС‚Р°РІРєРё (ExpectedDeliveryDate)
+* РёРјСЏ РїРѕСЃС‚Р°РІС‰РёРєР°
+* РёРјСЏ РєРѕРЅС‚Р°РєС‚РЅРѕРіРѕ Р»РёС†Р° РїСЂРёРЅРёРјР°РІС€РµРіРѕ Р·Р°РєР°Р· (ContactPerson)
 
-Таблицы: Purchasing.Suppliers, Purchasing.PurchaseOrders, Application.DeliveryMethods, Application.People.
+РўР°Р±Р»РёС†С‹: Purchasing.Suppliers, Purchasing.PurchaseOrders, Application.DeliveryMethods, Application.People.
 */
 
 SELECT DISTINCT
@@ -131,9 +131,9 @@ ORDER BY c.DeliveryMethodName
 	,d.FullName
 
 /*
-5. Десять последних продаж (по дате продажи) с именем клиента и именем сотрудника,
-который оформил заказ (SalespersonPerson).
-Сделать без подзапросов.
+5. Р”РµСЃСЏС‚СЊ РїРѕСЃР»РµРґРЅРёС… РїСЂРѕРґР°Р¶ (РїРѕ РґР°С‚Рµ РїСЂРѕРґР°Р¶Рё) СЃ РёРјРµРЅРµРј РєР»РёРµРЅС‚Р° Рё РёРјРµРЅРµРј СЃРѕС‚СЂСѓРґРЅРёРєР°,
+РєРѕС‚РѕСЂС‹Р№ РѕС„РѕСЂРјРёР» Р·Р°РєР°Р· (SalespersonPerson).
+РЎРґРµР»Р°С‚СЊ Р±РµР· РїРѕРґР·Р°РїСЂРѕСЃРѕРІ.
 */
 
 SELECT TOP 10 b.CustomerName
@@ -143,12 +143,12 @@ JOIN [Sales].[Customers] AS b ON a.CustomerID = b.CustomerID
 JOIN [Application].[People] AS c ON a.SalespersonPersonID = c.PersonID
 ORDER BY a.OrderDate DESC
 
---WITH TIES смотрит на атрибуты в ORDER BY
+--WITH TIES СЃРјРѕС‚СЂРёС‚ РЅР° Р°С‚СЂРёР±СѓС‚С‹ РІ ORDER BY
 
 /*
-6. Все ид и имена клиентов и их контактные телефоны,
-которые покупали товар "Chocolate frogs 250g".
-Имя товара смотреть в таблице Warehouse.StockItems.
+6. Р’СЃРµ РёРґ Рё РёРјРµРЅР° РєР»РёРµРЅС‚РѕРІ Рё РёС… РєРѕРЅС‚Р°РєС‚РЅС‹Рµ С‚РµР»РµС„РѕРЅС‹,
+РєРѕС‚РѕСЂС‹Рµ РїРѕРєСѓРїР°Р»Рё С‚РѕРІР°СЂ "Chocolate frogs 250g".
+РРјСЏ С‚РѕРІР°СЂР° СЃРјРѕС‚СЂРµС‚СЊ РІ С‚Р°Р±Р»РёС†Рµ Warehouse.StockItems.
 */
 
 SELECT DISTINCT c.CustomerID
