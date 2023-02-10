@@ -57,8 +57,12 @@
   <ItemGroup>
     <Folder Include="Properties" />
     <Folder Include="HW01 - install" />
+    <Folder Include="HW02 - select" />
   </ItemGroup>
   <ItemGroup>
     <None Include="HW01 - install\ScreenWideWorldImporters.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Build Include="HW02 - select\HW2-select.sql" />
   </ItemGroup>
 </Project>
