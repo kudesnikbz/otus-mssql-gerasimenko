@@ -121,10 +121,10 @@ Year | Month | SalesTotal
 
 SELECT [YEAR] = YEAR(a.InvoiceDate)
 	,[MONTH] = MONTH(a.InvoiceDate)
-	,[SUM_Sales] = CASE WHEN SUM(b.UnitPrice * b.Quantity) > 4600000
-						THEN CONVERT(VARCHAR(100), SUM(b.UnitPrice * b.Quantity))
-						ELSE '-'
-					END
+	,[SUM_Sales] = IIF(SUM(b.UnitPrice * b.Quantity) > 4600000
+						,CONVERT(VARCHAR(100), SUM(b.UnitPrice * b.Quantity))
+						,'-'
+					   )
 FROM Sales.Invoices AS a
 JOIN [Sales].[InvoiceLines] AS b ON a.InvoiceID = b.InvoiceID
 where YEAR(a.InvoiceDate) = '2015'
