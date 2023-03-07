@@ -69,5 +69,6 @@
     <Build Include="HW02 - select\HW2-select.sql" />
     <Build Include="HW03 - group\HW3-group.sql" />
     <Build Include="HW06 - CTE\HW6-cte.sql" />
+    <Build Include="HW05 - OVER\HW5-over.sql" />
   </ItemGroup>
 </Project>
