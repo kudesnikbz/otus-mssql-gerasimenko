@@ -60,6 +60,7 @@
     <Folder Include="HW02 - select" />
     <Folder Include="HW03 - group" />
     <Folder Include="HW06 - CTE" />
+    <Folder Include="HW05 - OVER" />
   </ItemGroup>
   <ItemGroup>
     <None Include="HW01 - install\ScreenWideWorldImporters.png" />
