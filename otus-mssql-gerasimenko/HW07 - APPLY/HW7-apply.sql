@@ -61,7 +61,6 @@ PIVOT(COUNT(x.InvoiceID) FOR x.[CustomerName] IN (
 			,[Peeples Valley, AZ]
 			,[Medicine Lodge, KS]
 			)) AS pvt
-
 -- не знаю как сделать сортировку по [InvoiceDate] тем функционалом, который изучили Приведения типов еще небыло.
 
 --select 
