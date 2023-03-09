@@ -61,6 +61,7 @@
     <Folder Include="HW03 - group" />
     <Folder Include="HW06 - CTE" />
     <Folder Include="HW05 - OVER" />
+    <Folder Include="HW07 - APPLY" />
   </ItemGroup>
   <ItemGroup>
     <None Include="HW01 - install\ScreenWideWorldImporters.png" />
@@ -70,5 +71,6 @@
     <Build Include="HW03 - group\HW3-group.sql" />
     <Build Include="HW06 - CTE\HW6-cte.sql" />
     <Build Include="HW05 - OVER\HW5-over.sql" />
+    <Build Include="HW07 - APPLY\HW7-apply.sql" />
   </ItemGroup>
 </Project>
