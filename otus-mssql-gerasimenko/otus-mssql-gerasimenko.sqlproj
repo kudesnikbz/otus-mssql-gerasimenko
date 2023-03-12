@@ -63,6 +63,7 @@
     <Folder Include="HW05 - OVER" />
     <Folder Include="HW07 - APPLY" />
     <Folder Include="HW08 - DynSQL" />
+    <Folder Include="HW09 - DML" />
   </ItemGroup>
   <ItemGroup>
     <None Include="HW01 - install\ScreenWideWorldImporters.png" />
@@ -74,5 +75,6 @@
     <Build Include="HW05 - OVER\HW5-over.sql" />
     <Build Include="HW07 - APPLY\HW7-apply.sql" />
     <Build Include="HW08 - DynSQL\HW8-DynSQL.sql" />
+    <Build Include="HW09 - DML\HW-dml.sql" />
   </ItemGroup>
 </Project>
