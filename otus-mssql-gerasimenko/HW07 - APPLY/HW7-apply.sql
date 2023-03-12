@@ -39,14 +39,14 @@ InvoiceMonth | Peeples Valley, AZ | Medicine Lodge, KS | Gasport, NY | Sylvanite
 -------------+--------------------+--------------------+-------------+--------------+------------
 */
 
-SELECT pvt.InvoiceDate
+SELECT [InvoiceDate] = CONVERT(varchar(10), pvt.InvoiceDate, 104)
 	,pvt.[Jessie, ND]
 	,pvt.[Sylvanite, MT]
 	,pvt.[Gasport, NY]
 	,pvt.[Peeples Valley, AZ]
 	,pvt.[Medicine Lodge, KS]
 FROM (
-	SELECT [InvoiceDate] = FORMAT(a.InvoiceDate, 'dd.MM.yyyy')
+	SELECT [InvoiceDate] = DATEADD(month, DATEDIFF(month, 0, a.InvoiceDate), 0)
 		,[CustomerName] = SUBSTRING(b.CustomerName, CHARINDEX('(', b.CustomerName) + 1, CHARINDEX(')', SUBSTRING(b.CustomerName, CHARINDEX('(', b.CustomerName) + 1, LEN(b.CustomerName))) - 1)
 		,a.InvoiceID
 	FROM Sales.Invoices AS a
@@ -61,7 +61,7 @@ PIVOT(COUNT(x.InvoiceID) FOR x.[CustomerName] IN (
 			,[Peeples Valley, AZ]
 			,[Medicine Lodge, KS]
 			)) AS pvt
--- не знаю как сделать сортировку по [InvoiceDate] тем функционалом, который изучили Приведения типов еще небыло.
+ORDER BY pvt.InvoiceDate ASC
 
 --select 
 --[InvoiceDate] = FORMAT(a.InvoiceDate, 'dd.MM.yyyy'),
@@ -144,6 +144,38 @@ unpivot(Code FOR IsoList IN (
 В результатах должно быть ид клиета, его название, ид товара, цена, дата покупки.
 */
 
+;WITH CTE1 (CustomerID,StockItemID,UnitPrice,[InvoiceDate])
+AS (
+	SELECT a.CustomerID
+		,b.StockItemID
+		,b.UnitPrice
+		,[InvoiceDate] = MAX(a.InvoiceDate)
+	FROM Sales.Invoices AS a
+	JOIN Sales.InvoiceLines AS b ON a.InvoiceID = b.InvoiceID
+	GROUP BY a.CustomerID
+		,b.StockItemID
+		,b.UnitPrice
+	)
+
+SELECT c.CustomerID
+	,c.CustomerName
+	,x.StockItemID
+	,x.UnitPrice
+	,x.InvoiceDate
+FROM Sales.Customers AS c
+CROSS APPLY (
+	SELECT TOP (2) il.StockItemID
+		,il.UnitPrice
+		,il.InvoiceDate
+	FROM CTE1 AS il
+	WHERE c.CustomerID = il.CustomerID
+	ORDER BY il.UnitPrice DESC
+	) AS x
+ORDER BY c.CustomerID
+	,x.UnitPrice DESC
+	,x.InvoiceDate ASC
+
+/*
 SELECT a.CustomerID
 	,c.CustomerName
 	,b.StockItemID
@@ -161,3 +193,4 @@ WHERE x.StockItemID = b.StockItemID
 ORDER BY a.CustomerID
 	,b.ExtendedPrice DESC
 	,a.InvoiceDate ASC
+*/
