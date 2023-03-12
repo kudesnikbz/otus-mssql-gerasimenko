@@ -67,6 +67,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="HW01 - install\ScreenWideWorldImporters.png" />
+    <None Include="HW09 - DML\dataprim_Unicode.txt" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="HW02 - select\HW2-select.sql" />
@@ -75,6 +76,6 @@
     <Build Include="HW05 - OVER\HW5-over.sql" />
     <Build Include="HW07 - APPLY\HW7-apply.sql" />
     <Build Include="HW08 - DynSQL\HW8-DynSQL.sql" />
-    <Build Include="HW09 - DML\HW-dml.sql" />
+    <Build Include="HW09 - DML\HW9-dml.sql" />
   </ItemGroup>
 </Project>
