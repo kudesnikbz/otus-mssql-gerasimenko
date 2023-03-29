@@ -65,13 +65,10 @@
     <Folder Include="HW08 - DynSQL" />
     <Folder Include="HW09 - DML" />
     <Folder Include="HW10 - XML_JSON" />
-    <Folder Include="HW12 - Project" />
   </ItemGroup>
   <ItemGroup>
     <None Include="HW01 - install\ScreenWideWorldImporters.png" />
     <None Include="HW09 - DML\dataprim_Unicode.txt" />
-    <None Include="HW12 - Project\TMS.pdf" />
-    <None Include="HW12 - Project\Управление заявками на доставку.txt" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="HW02 - select\HW2-select.sql" />
