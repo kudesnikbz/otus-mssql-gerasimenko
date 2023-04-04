@@ -66,6 +66,7 @@
     <Folder Include="HW09 - DML" />
     <Folder Include="HW10 - XML_JSON" />
     <Folder Include="HW12 - Project" />
+    <Folder Include="HW14 - DDL" />
   </ItemGroup>
   <ItemGroup>
     <None Include="HW01 - install\ScreenWideWorldImporters.png" />
@@ -82,5 +83,6 @@
     <Build Include="HW08 - DynSQL\HW8-DynSQL.sql" />
     <Build Include="HW09 - DML\HW9-dml.sql" />
     <Build Include="HW10 - XML_JSON\HW10-XML_JSON.sql" />
+    <Build Include="HW14 - DDL\HW14_ddl.sql" />
   </ItemGroup>
 </Project>
