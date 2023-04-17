@@ -68,6 +68,7 @@
     <Folder Include="HW12 - Project" />
     <Folder Include="HW14 - DDL" />
     <Folder Include="HW16 - Index" />
+    <Folder Include="HW17 - Fucntion" />
   </ItemGroup>
   <ItemGroup>
     <None Include="HW01 - install\ScreenWideWorldImporters.png" />
@@ -87,5 +88,6 @@
     <Build Include="HW10 - XML_JSON\HW10-XML_JSON.sql" />
     <Build Include="HW14 - DDL\HW14-ddl.sql" />
     <Build Include="HW16 - Index\HW16-index.sql" />
+    <Build Include="HW17 - Fucntion\HW17-function.sql" />
   </ItemGroup>
 </Project>
