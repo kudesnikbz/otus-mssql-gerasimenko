@@ -69,6 +69,7 @@
     <Folder Include="HW14 - DDL" />
     <Folder Include="HW16 - Index" />
     <Folder Include="HW17 - Fucntion" />
+    <Folder Include="HW19 - Broker" />
   </ItemGroup>
   <ItemGroup>
     <None Include="HW01 - install\ScreenWideWorldImporters.png" />
@@ -89,5 +90,6 @@
     <Build Include="HW14 - DDL\HW14-ddl.sql" />
     <Build Include="HW16 - Index\HW16-index.sql" />
     <Build Include="HW17 - Fucntion\HW17-function.sql" />
+    <Build Include="HW19 - Broker\HW19-Broker.sql" />
   </ItemGroup>
 </Project>
