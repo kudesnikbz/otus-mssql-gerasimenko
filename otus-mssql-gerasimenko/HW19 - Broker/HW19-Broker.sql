@@ -21,7 +21,7 @@ RecordDate datetime default getdate()
 --truncate table rep.OrderByCustomerID
 
 --2
---Создание типов сообщений для запроса и ответного сообщения
+--РЎРѕР·РґР°РЅРёРµ С‚РёРїРѕРІ СЃРѕРѕР±С‰РµРЅРёР№ РґР»СЏ Р·Р°РїСЂРѕСЃР° Рё РѕС‚РІРµС‚РЅРѕРіРѕ СЃРѕРѕР±С‰РµРЅРёСЏ
 USE WideWorldImporters
 -- For Request
 CREATE MESSAGE TYPE
@@ -58,7 +58,7 @@ CREATE SERVICE [Initiator_s_Report]
        ([ReportContract]);
 GO
 
---4 Создание процедуры (добавляем сообщение в очередь)
+--4 РЎРѕР·РґР°РЅРёРµ РїСЂРѕС†РµРґСѓСЂС‹ (РґРѕР±Р°РІР»СЏРµРј СЃРѕРѕР±С‰РµРЅРёРµ РІ РѕС‡РµСЂРµРґСЊ)
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -73,13 +73,13 @@ AS
 BEGIN
 	SET NOCOUNT ON;
 
-    --Отправка сообщения с запросом целевому объекту	
+    --РћС‚РїСЂР°РІРєР° СЃРѕРѕР±С‰РµРЅРёСЏ СЃ Р·Р°РїСЂРѕСЃРѕРј С†РµР»РµРІРѕРјСѓ РѕР±СЉРµРєС‚Сѓ	
 	DECLARE @InitDlgHandle UNIQUEIDENTIFIER;
 	DECLARE @RequestMessage NVARCHAR(4000);
 	
 	BEGIN TRAN 
 
-	--Сообщение
+	--РЎРѕРѕР±С‰РµРЅРёРµ
 	SELECT @RequestMessage = (SELECT [CustomerID] = @CustomerID,
 									 [DateStart] = @DateStart,
 									 [DateEnd] = @DateEnd
@@ -95,7 +95,7 @@ BEGIN
 	[ReportContract]
 	WITH ENCRYPTION=OFF; 
 
-	--Отправляем сообщение
+	--РћС‚РїСЂР°РІР»СЏРµРј СЃРѕРѕР±С‰РµРЅРёРµ
 	SEND ON CONVERSATION @InitDlgHandle 
 	MESSAGE TYPE
 	[RequestReportMessage]
@@ -106,7 +106,7 @@ END
 GO
 
 
---5 Завершение диалога(обработка сообщения)
+--5 Р—Р°РІРµСЂС€РµРЅРёРµ РґРёР°Р»РѕРіР°(РѕР±СЂР°Р±РѕС‚РєР° СЃРѕРѕР±С‰РµРЅРёСЏ)
 CREATE or ALTER PROCEDURE rep.GetOrderByCustomerID
 AS
 BEGIN
@@ -123,7 +123,7 @@ BEGIN
 	
 	BEGIN TRAN; 
 
-	--Получаем сообщение от инициатора
+	--РџРѕР»СѓС‡Р°РµРј СЃРѕРѕР±С‰РµРЅРёРµ РѕС‚ РёРЅРёС†РёР°С‚РѕСЂР°
 	RECEIVE TOP(1)
 		@TargetDlgHandle = Conversation_Handle,
 		@Message = Message_Body,
@@ -165,11 +165,11 @@ BEGIN
 	COMMIT TRAN;
 END
 
---6 Обработка сообщений на инициаторе (повесили трубку)
+--6 РћР±СЂР°Р±РѕС‚РєР° СЃРѕРѕР±С‰РµРЅРёР№ РЅР° РёРЅРёС†РёР°С‚РѕСЂРµ (РїРѕРІРµСЃРёР»Рё С‚СЂСѓР±РєСѓ)
 CREATE or ALTER PROCEDURE rep.CommitOrderByCustomerID
 AS
 BEGIN
-	--Получение ответного сообщения от  Target.	
+	--РџРѕР»СѓС‡РµРЅРёРµ РѕС‚РІРµС‚РЅРѕРіРѕ СЃРѕРѕР±С‰РµРЅРёСЏ РѕС‚  Target.	
 	DECLARE @InitiatorReplyDlgHandle UNIQUEIDENTIFIER,
 			@ReplyReceivedMessage NVARCHAR(1000) 
 	
@@ -187,7 +187,7 @@ BEGIN
 	COMMIT TRAN; 
 END
 
---7 Очереди без процедур обработки
+--7 РћС‡РµСЂРµРґРё Р±РµР· РїСЂРѕС†РµРґСѓСЂ РѕР±СЂР°Р±РѕС‚РєРё
 ALTER QUEUE [dbo].Initiator_q_Report WITH STATUS = ON , RETENTION = OFF , POISON_MESSAGE_HANDLING (STATUS = OFF) 
 	, ACTIVATION (   STATUS = OFF ,
         PROCEDURE_NAME = rep.CommitOrderByCustomerID, MAX_QUEUE_READERS = 1, EXECUTE AS OWNER) ; 
@@ -199,7 +199,7 @@ ALTER QUEUE [dbo].Target_q_Report WITH STATUS = ON , RETENTION = OFF , POISON_ME
 
 GO
 
---8 Смотрим конкретное сообщение
+--8 РЎРјРѕС‚СЂРёРј РєРѕРЅРєСЂРµС‚РЅРѕРµ СЃРѕРѕР±С‰РµРЅРёРµ
 SELECT *
 FROM rep.OrderByCustomerID
 
@@ -219,7 +219,7 @@ EXEC rep.GetOrderByCustomerID;
 --Initiator
 EXEC rep.CommitOrderByCustomerID;
 
-/* смотрим обработку сообщений
+/* СЃРјРѕС‚СЂРёРј РѕР±СЂР°Р±РѕС‚РєСѓ СЃРѕРѕР±С‰РµРЅРёР№
 SELECT conversation_handle, is_initiator, s.name as 'local service', far_service, sc.name  'contract', ce.state_desc
 FROM sys.conversation_endpoints ce
 LEFT JOIN sys.services s
