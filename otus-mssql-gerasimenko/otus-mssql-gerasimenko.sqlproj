@@ -70,6 +70,7 @@
     <Folder Include="HW16 - Index" />
     <Folder Include="HW17 - Fucntion" />
     <Folder Include="HW19 - Broker" />
+    <Folder Include="Project" />
   </ItemGroup>
   <ItemGroup>
     <None Include="HW01 - install\ScreenWideWorldImporters.png" />
