@@ -55,6 +55,11 @@
   <Import Condition="'$(SQLDBExtensionsRefPath)' != ''" Project="$(SQLDBExtensionsRefPath)\Microsoft.Data.Tools.Schema.SqlTasks.targets" />
   <Import Condition="'$(SQLDBExtensionsRefPath)' == ''" Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\SSDT\Microsoft.Data.Tools.Schema.SqlTasks.targets" />
   <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
     <Folder Include="Properties" />
     <Folder Include="HW01 - install" />
     <Folder Include="HW02 - select" />
@@ -71,6 +76,7 @@
     <Folder Include="HW17 - Fucntion" />
     <Folder Include="HW19 - Broker" />
     <Folder Include="Project" />
+    <Folder Include="HW21- CLR" />
   </ItemGroup>
   <ItemGroup>
     <None Include="HW01 - install\ScreenWideWorldImporters.png" />
@@ -78,6 +84,7 @@
     <None Include="HW12 - Project\ManageRequestCargoShipping.pdf" />
     <None Include="HW12 - Project\Концепт.txt" />
     <None Include="HW12 - Project\Transportation management system-dbdesigner-3.pdf" />
+    <None Include="HW21- CLR\Word_Date_Format.dll" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="HW02 - select\HW2-select.sql" />
@@ -92,5 +99,9 @@
     <Build Include="HW16 - Index\HW16-index.sql" />
     <Build Include="HW17 - Fucntion\HW17-function.sql" />
     <Build Include="HW19 - Broker\HW19-Broker.sql" />
+    <Build Include="HW21- CLR\HW21-CLR.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="HW21- CLR\Word_Date_Format.cs" />
   </ItemGroup>
 </Project>
