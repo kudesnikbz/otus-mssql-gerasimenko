@@ -77,6 +77,7 @@
     <Folder Include="HW19 - Broker" />
     <Folder Include="Project" />
     <Folder Include="HW21- CLR" />
+    <Folder Include="HW31 - HINT" />
   </ItemGroup>
   <ItemGroup>
     <None Include="HW01 - install\ScreenWideWorldImporters.png" />
@@ -85,6 +86,8 @@
     <None Include="HW12 - Project\Концепт.txt" />
     <None Include="HW12 - Project\Transportation management system-dbdesigner-3.pdf" />
     <None Include="HW21- CLR\Word_Date_Format.dll" />
+    <None Include="HW31 - HINT\HW31_Hint_plan1.sqlplan" />
+    <None Include="HW31 - HINT\HW31_Hint_plan2.sqlplan" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="HW02 - select\HW2-select.sql" />
@@ -100,6 +103,7 @@
     <Build Include="HW17 - Fucntion\HW17-function.sql" />
     <Build Include="HW19 - Broker\HW19-Broker.sql" />
     <Build Include="HW21- CLR\HW21-CLR.sql" />
+    <Build Include="HW31 - HINT\HW31-Hint.sql" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="HW21- CLR\Word_Date_Format.cs" />
