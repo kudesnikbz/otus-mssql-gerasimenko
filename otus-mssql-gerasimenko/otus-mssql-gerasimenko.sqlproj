@@ -88,6 +88,7 @@
     <None Include="HW21- CLR\Word_Date_Format.dll" />
     <None Include="HW31 - HINT\HW31_Hint_plan1.sqlplan" />
     <None Include="HW31 - HINT\HW31_Hint_plan2.sqlplan" />
+    <None Include="HW31 - HINT\HW31.png" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="HW02 - select\HW2-select.sql" />

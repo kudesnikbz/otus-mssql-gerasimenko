@@ -1,14 +1,14 @@
 /*
 Пришел запрос от администратора системы управления складом. Запрос которым они анализировали Среднее время приемки, перестал работать. Запускает в студии, он работает более 15 минут, так как желания ждать дольше нет, отключает его.
 Попробую частично его переписать и понять хотябы что он получает.
+Выполнил запрос на тестовой среде, что бы понимать какие данные выдает и приложил план запроса HW31_Hint_plan1
+Скрин выполнения старого запроса приложил.
 
 declare 
 @StartD DATETIME,
 @EndD DATETIME
-SET 
-@StartD = dateadd(week,-20,(dateadd(day, datediff(day,0, getdate())/7*7,0)))
-SET
-@EndD =getdate()
+SET @StartD = dateadd(week,-20,(dateadd(day, datediff(day,0, getdate())/7*7,0)))
+SET @EndD =getdate()
 
 select
 bbb.ww as 'Неделя',
@@ -231,10 +231,7 @@ CREATE NONCLUSTERED INDEX [NCI_ManualAllocationLog_CurrentLocation_RecordDate_Op
 ON [dbo].[ManualAllocationLog] ([CurrentLocation_id],[RecordDate],[Operation])
 INCLUDE ([StorageObject_id],[TargetLocation_id])
 GO
-
-
 */
-
 
 --Ручные перемещения объектов складирования
 --ограничу по времени, брать всю таблу плохо
@@ -387,7 +384,7 @@ ORDER BY bbb.yy asc
 	,bbb.ww asc
 
 /*
-
+--HW31_Hint_plan2
 --Статистика стало:
 SQL Server parse and compile time: 
    CPU time = 0 ms, elapsed time = 0 ms.
