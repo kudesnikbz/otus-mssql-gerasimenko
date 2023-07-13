@@ -71,25 +71,25 @@ JOIN sys.filegroups as fg on fg.data_space_id = au.data_space_id
 ORDER BY [Schema.Table], [Index ID], [Partition Function], [Partition #];
 
 
---Создам функцию
+--вЂ”СЃРѕР·РґР°Рј С„СѓРЅРєС†РёСЋ
 CREATE PARTITION FUNCTION [pfTransactions] (DATETIME2) AS range right
 FOR VALUES ('20220401','20220801')
 
---создам схему
+--СЃРѕР·РґР°Рј СЃС…РµРјСѓ
 CREATE PARTITION scheme psTransactions AS PARTITION [pfTransactions] TO ([FG1],[FG2],[FG3])
 
---кластерный индекс
+--РєР»Р°СЃС‚РµСЂРЅС‹Р№ РёРЅРґРµРєСЃ
 CREATE CLUSTERED INDEX cix_pTransaction_id on [Transactions](id) on psTransactions(CreationDateTime)
 
----Скользящее окно
---1) новаЯ секциЯ:
+---вЂ”СЃРєРѕР»СЊР·СЊР·СЏС‰РµРµ РѕРєРЅРѕ
+--1) РЅРѕРІР°СЏ СЃРµРєС†РёСЏ:
 ALTER PARTITION scheme psTransactions NEXT used [FG1];
 
 SET STATISTICS TIME,IO ON;
 	ALTER PARTITION FUNCTION [pfTransactions] () split range ('20230101');
 SET STATISTICS TIME,IO OFF;
 
---2) таблица архив без последовательностей и индексов, но с кластерным индексом по ней
+--2) С‚Р°Р±Р»РёС†Р° Р°СЂС…РёРІ Р±РµР· РїРѕСЃР»РµРґРѕРІР°С‚РµР»СЊРЅРѕСЃС‚РµР№ Рё РёРЅРґРµРєСЃРѕРІ, РЅРѕ СЃ РєР»Р°СЃС‚РµСЂРЅС‹Рј РёРЅРґРµРєСЃРѕРј РїРѕ РЅРµР№
 CREATE TABLE [dbo].[stageTransactions](
 	[id] [int] NOT NULL,
 	[CreationDateTime] [datetime2](7) NOT NULL,
@@ -101,7 +101,7 @@ CREATE TABLE [dbo].[stageTransactions](
 GO
 CREATE CLUSTERED INDEX cix_stageTransaction_id on stageTransactions(id, CreationDateTime) on [FG1];
 
---3) переключаю секцию
+--3) РїРµСЂРµРєР»СЋС‡Р°СЋ СЃРµРєС†РёСЋ
 SET STATISTICS TIME, IO ON;
 	ALTER TABLE Transactions switch PARTITION 1 TO stageTransactions
 SET STATISTICS TIME, IO OFF;
@@ -112,7 +112,7 @@ FROM Transactions
 SELECT *
 FROM stageTransactions
 
---4) удаляю ненужную секцию
+--4) СѓРґР°Р»СЏСЋ РЅРµРЅСѓР¶РЅСѓСЋ СЃРµРєС†РёСЋ
 SET STATISTICS TIME, IO ON;
 	ALTER PARTITION FUNCTION pfTransactions () MERGE range('20220401');
 SET STATISTICS TIME, IO OFF;
