@@ -78,6 +78,7 @@
     <Folder Include="Project" />
     <Folder Include="HW21- CLR" />
     <Folder Include="HW31 - HINT" />
+    <Folder Include="HW33 - PARTITION" />
   </ItemGroup>
   <ItemGroup>
     <None Include="HW01 - install\ScreenWideWorldImporters.png" />
@@ -105,6 +106,7 @@
     <Build Include="HW19 - Broker\HW19-Broker.sql" />
     <Build Include="HW21- CLR\HW21-CLR.sql" />
     <Build Include="HW31 - HINT\HW31-Hint.sql" />
+    <Build Include="HW33 - PARTITION\HW33-PARTITION.sql" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="HW21- CLR\Word_Date_Format.cs" />
