@@ -1,0 +1,36 @@
+USE [GDS2]
+GO
+/****** Object:  Table [dict].[Driver]    Script Date: 24.07.2023 19:48:20 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dict].[Driver](
+	[id] [bigint] IDENTITY(0,1) NOT NULL,
+	[Name] [varchar](150) NOT NULL,
+	[FullName] [varchar](255) NOT NULL,
+	[ExternalCode] [varchar](255) NOT NULL,
+	[RecordDate] [datetime] NOT NULL,
+	[TelefonNummer] [varchar](150) NOT NULL,
+	[Email] [varchar](150) NOT NULL,
+	[ValidFrom] [datetime2](7) GENERATED ALWAYS AS ROW START HIDDEN NOT NULL,
+	[ValidTo] [datetime2](7) GENERATED ALWAYS AS ROW END HIDDEN NOT NULL,
+ CONSTRAINT [PK_TRANSPORTER] PRIMARY KEY CLUSTERED 
+(
+	[id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY],
+ CONSTRAINT [UQ_Driver_ExternalCode] UNIQUE NONCLUSTERED 
+(
+	[ExternalCode] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY],
+	PERIOD FOR SYSTEM_TIME ([ValidFrom], [ValidTo])
+) ON [PRIMARY]
+WITH
+(
+SYSTEM_VERSIONING = ON (HISTORY_TABLE = [archive].[Driver_Archive])
+)
+GO
+ALTER TABLE [dict].[Driver] ADD  CONSTRAINT [DF_Driver_ValidFrom]  DEFAULT (sysutcdatetime()) FOR [ValidFrom]
+GO
+ALTER TABLE [dict].[Driver] ADD  CONSTRAINT [DF_Driver_ValidTo]  DEFAULT (CONVERT([datetime2],'9999-12-31 23:59:59.9999999')) FOR [ValidTo]
+GO

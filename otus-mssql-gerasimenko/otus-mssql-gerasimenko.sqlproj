@@ -79,17 +79,20 @@
     <Folder Include="HW21- CLR" />
     <Folder Include="HW31 - HINT" />
     <Folder Include="HW33 - PARTITION" />
+    <Folder Include="HW12 - Project\ImportXML" />
+    <Folder Include="HW12 - Project\GeocoderYA" />
+    <Folder Include="HW12 - Project\DB" />
   </ItemGroup>
   <ItemGroup>
     <None Include="HW01 - install\ScreenWideWorldImporters.png" />
     <None Include="HW09 - DML\dataprim_Unicode.txt" />
     <None Include="HW12 - Project\ManageRequestCargoShipping.pdf" />
     <None Include="HW12 - Project\Концепт.txt" />
-    <None Include="HW12 - Project\Transportation management system-dbdesigner-3.pdf" />
     <None Include="HW21- CLR\Word_Date_Format.dll" />
     <None Include="HW31 - HINT\HW31_Hint_plan1.sqlplan" />
     <None Include="HW31 - HINT\HW31_Hint_plan2.sqlplan" />
     <None Include="HW31 - HINT\HW31.png" />
+    <None Include="HW12 - Project\ImportXML\TMS_ImportXML.rar" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="HW02 - select\HW2-select.sql" />
@@ -107,8 +110,67 @@
     <Build Include="HW21- CLR\HW21-CLR.sql" />
     <Build Include="HW31 - HINT\HW31-Hint.sql" />
     <Build Include="HW33 - PARTITION\HW33-PARTITION.sql" />
+    <Build Include="HW12 - Project\DB\app.RequestGeocodeAdresse.StoredProcedure.sql" />
+    <Build Include="HW12 - Project\DB\agent.Schema.sql" />
+    <Build Include="HW12 - Project\DB\agent.SetGeocodeToAddress.StoredProcedure.sql" />
+    <Build Include="HW12 - Project\DB\app.Schema.sql" />
+    <Build Include="HW12 - Project\DB\app.SetGeocodeAdresse.StoredProcedure.sql" />
+    <Build Include="HW12 - Project\DB\archive.Addresse_Archive.Table.sql" />
+    <Build Include="HW12 - Project\DB\archive.Cities_Archive.Table.sql" />
+    <Build Include="HW12 - Project\DB\archive.Country_Archive.Table.sql" />
+    <Build Include="HW12 - Project\DB\archive.DebtorCategorys_Archive.Table.sql" />
+    <Build Include="HW12 - Project\DB\archive.Debtors_Archive.Table.sql" />
+    <Build Include="HW12 - Project\DB\archive.Driver_Archive.Table.sql" />
+    <Build Include="HW12 - Project\DB\archive.GeoZone_Archive.Table.sql" />
+    <Build Include="HW12 - Project\DB\archive.GeoZonePoly_Archive.Table.sql" />
+    <Build Include="HW12 - Project\DB\archive.Region_Archive.Table.sql" />
+    <Build Include="HW12 - Project\DB\archive.Schema.sql" />
+    <Build Include="HW12 - Project\DB\archive.TransactionTypes_Archive.Table.sql" />
+    <Build Include="HW12 - Project\DB\archive.TypeService_Archive.Table.sql" />
+    <Build Include="HW12 - Project\DB\archive.Vehisle_Archive.Table.sql" />
+    <Build Include="HW12 - Project\DB\dbo.CreateTransaction.StoredProcedure.sql" />
+    <Build Include="HW12 - Project\DB\dbo.fn_StringToTableVarchar.UserDefinedFunction.sql" />
+    <Build Include="HW12 - Project\DB\dbo.sp_helptextEx.StoredProcedure.sql" />
+    <Build Include="HW12 - Project\DB\dbo.Structures.Table.sql" />
+    <Build Include="HW12 - Project\DB\dbo.Transactions.Table.sql" />
+    <Build Include="HW12 - Project\DB\dbo.WebrequestGET.StoredProcedure.sql" />
+    <Build Include="HW12 - Project\DB\dict.Addresse.Table.sql" />
+    <Build Include="HW12 - Project\DB\dict.Cities.Table.sql" />
+    <Build Include="HW12 - Project\DB\dict.Country.Table.sql" />
+    <Build Include="HW12 - Project\DB\dict.DebtorCategorys.Table.sql" />
+    <Build Include="HW12 - Project\DB\dict.Debtors.Table.sql" />
+    <Build Include="HW12 - Project\DB\dict.Driver.Table.sql" />
+    <Build Include="HW12 - Project\DB\dict.GeoZone.Table.sql" />
+    <Build Include="HW12 - Project\DB\dict.GeoZonePoly.Table.sql" />
+    <Build Include="HW12 - Project\DB\dict.Region.Table.sql" />
+    <Build Include="HW12 - Project\DB\dict.Schema.sql" />
+    <Build Include="HW12 - Project\DB\dict.TransactionTypes.Table.sql" />
+    <Build Include="HW12 - Project\DB\dict.TypeService.Table.sql" />
+    <Build Include="HW12 - Project\DB\dict.Vehisle.Table.sql" />
+    <Build Include="HW12 - Project\DB\doc.hdr_RequestCargoShipping.Table.sql" />
+    <Build Include="HW12 - Project\DB\doc.hdr_Route.Table.sql" />
+    <Build Include="HW12 - Project\DB\doc.hdr_TaskCorgoShipping.Table.sql" />
+    <Build Include="HW12 - Project\DB\doc.Schema.sql" />
+    <Build Include="HW12 - Project\DB\doc.tbl_RequestAdditionalServices.Table.sql" />
+    <Build Include="HW12 - Project\DB\doc.tbl_RequestCargoShipping.Table.sql" />
+    <Build Include="HW12 - Project\DB\int.GetIntegrationData.StoredProcedure.sql" />
+    <Build Include="HW12 - Project\DB\int.IntegrationByStructure.StoredProcedure.sql" />
+    <Build Include="HW12 - Project\DB\int.IntegrationInsert_xml_Address.StoredProcedure.sql" />
+    <Build Include="HW12 - Project\DB\int.IntegrationUpdate_xml_Address.StoredProcedure.sql" />
+    <Build Include="HW12 - Project\DB\int.Schema.sql" />
+    <Build Include="HW12 - Project\DB\int.xml_Address.Table.sql" />
+    <Build Include="HW12 - Project\DB\int.xml_Debtors.Table.sql" />
+    <Build Include="HW12 - Project\DB\int.xml_RequestOrder.Table.sql" />
+    <Build Include="HW12 - Project\DB\log.RequestGeocodeAdresse.Table.sql" />
+    <Build Include="HW12 - Project\DB\log.Schema.sql" />
+    <Build Include="HW12 - Project\DB\match.Address.Table.sql" />
+    <Build Include="HW12 - Project\DB\match.Schema.sql" />
+    <Build Include="HW12 - Project\DB\SqlWebRequest.SqlAssembly.sql" />
+    <Build Include="HW12 - Project\DB\ConsraintTransaction.sql" />
+    <Build Include="HW12 - Project\DB\PARTITION_demo2.sql" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="HW21- CLR\Word_Date_Format.cs" />
+    <Compile Include="HW12 - Project\GeocoderYA\SqlWebRequest.cs" />
   </ItemGroup>
 </Project>
