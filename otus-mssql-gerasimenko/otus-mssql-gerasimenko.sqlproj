@@ -110,9 +110,11 @@
     <Build Include="HW21- CLR\HW21-CLR.sql" />
     <Build Include="HW31 - HINT\HW31-Hint.sql" />
     <Build Include="HW33 - PARTITION\HW33-PARTITION.sql" />
-    <Build Include="HW12 - Project\DB\app.RequestGeocodeAdresse.StoredProcedure.sql" />
+    <Build Include="HW12 - Project\DB\SqlWebRequest.SqlAssembly.sql" />
+    <Build Include="HW12 - Project\DB\PARTITION_demo2.sql" />
     <Build Include="HW12 - Project\DB\agent.Schema.sql" />
     <Build Include="HW12 - Project\DB\agent.SetGeocodeToAddress.StoredProcedure.sql" />
+    <Build Include="HW12 - Project\DB\app.RequestGeocodeAdresse.StoredProcedure.sql" />
     <Build Include="HW12 - Project\DB\app.Schema.sql" />
     <Build Include="HW12 - Project\DB\app.SetGeocodeAdresse.StoredProcedure.sql" />
     <Build Include="HW12 - Project\DB\archive.Addresse_Archive.Table.sql" />
@@ -165,9 +167,6 @@
     <Build Include="HW12 - Project\DB\log.Schema.sql" />
     <Build Include="HW12 - Project\DB\match.Address.Table.sql" />
     <Build Include="HW12 - Project\DB\match.Schema.sql" />
-    <Build Include="HW12 - Project\DB\SqlWebRequest.SqlAssembly.sql" />
-    <Build Include="HW12 - Project\DB\ConsraintTransaction.sql" />
-    <Build Include="HW12 - Project\DB\PARTITION_demo2.sql" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="HW21- CLR\Word_Date_Format.cs" />
