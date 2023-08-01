@@ -82,6 +82,7 @@
     <Folder Include="HW12 - Project\ImportXML" />
     <Folder Include="HW12 - Project\GeocoderYA" />
     <Folder Include="HW12 - Project\DB" />
+    <Folder Include="HW22 - Report" />
   </ItemGroup>
   <ItemGroup>
     <None Include="HW01 - install\ScreenWideWorldImporters.png" />
@@ -93,6 +94,8 @@
     <None Include="HW31 - HINT\HW31_Hint_plan2.sqlplan" />
     <None Include="HW31 - HINT\HW31.png" />
     <None Include="HW12 - Project\ImportXML\TMS_ImportXML.rar" />
+    <None Include="HW22 - Report\xPRGlNm1XB.png" />
+    <None Include="HW22 - Report\HW-22 - SSRS Колво доставок.rdl" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="HW02 - select\HW2-select.sql" />
